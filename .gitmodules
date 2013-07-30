@@ -1,0 +1,3 @@
+[submodule "lib/php-passkit"]
+	path = lib/php-passkit
+	url = https://github.com/tschoffelen/PHP-Passkit.git
