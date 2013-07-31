@@ -5,7 +5,7 @@
 */
 class GBS_Show_Passbook {
 
-	function __construct() {
+	public function init() {
 		# code...
 	}
 }

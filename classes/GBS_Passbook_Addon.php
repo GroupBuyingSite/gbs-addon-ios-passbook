@@ -6,16 +6,20 @@
 class GBS_Passbook_Addon extends Group_Buying_Controller {
 
 	public static function init() {
+		require_once('PK_Pass_Init.php');
+		require_once('GBS_Create_Passbook.php');
+
 		require_once('GBS_Show_Passbook.php');
 		GBS_Show_Passbook::init();
-
-		require_once('GBS_Create_Passbook.php');
-		GBS_Create_Passbook::init();
 
 		if ( is_admin() ) {
 			require_once('GBS_Passbook_Options.php');
 			GBS_Passbook_Options::init();
+
+			//GBS_Create_Passbook::pass(2659);
 		}
+
+
 	}
 
 	public static function gb_addon( $addons ) {
