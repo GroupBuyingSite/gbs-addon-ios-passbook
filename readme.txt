@@ -9,7 +9,7 @@ Ability to send users a voucher in iOS Passbook.
 ### Requesting the Pass Certificate
 1. Go to the [iOS Provisioning portal](https://developer.apple.com/ios/manage/passtypeids/ios/manage)
 2. Create a new Pass Type ID
-3. Request the certificate like shown
+3. Request the certificate and follow the directions to create a CSR file.
 4. Download the .cer file and drag it into Keychain Access
 5. Right click the certificate in Keychain Access and choose `Export 'pass.<id>'…`
 6. Choose a password and export the file to a folder
