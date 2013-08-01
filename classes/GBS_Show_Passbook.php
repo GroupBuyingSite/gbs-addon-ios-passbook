@@ -6,6 +6,9 @@
 class GBS_Show_Passbook {
 
 	public function init() {
-		# code...
+
+		// Filter download link if iOS
+
+		// Filter voucher template
 	}
 }

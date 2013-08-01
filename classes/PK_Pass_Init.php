@@ -10,7 +10,7 @@ class PK_Pass_Init extends PKPass {
 	public function init() {
 		GBS_Passbook_Options::init();
 
-		$cert_path = ( file_exists( GB_PBCERT_PATH . 'Certificate.p12' ) ) ? GB_PBCERT_PATH . 'Certificate.p12' : GB_PB_PATH . 'certs/Certificate.p12';
+		$cert_path = ( file_exists( GB_PBCERT_PATH . 'Certificates.p12' ) ) ? GB_PBCERT_PATH . 'Certificates.p12' : GB_PB_PATH . 'certs/Certificates.p12';
 		$pem = ( file_exists( GB_PBCERT_PATH . 'AppleWWDRCA.pem' ) ) ? GB_PBCERT_PATH . 'AppleWWDRCA.pem' : GB_PB_PATH . 'certs/AppleWWDRCA.pem';
 		$pass = new PKPass();
 		$pass->setCertificate( $cert_path );  // Set the path to your Pass Certificate (.p12 file)

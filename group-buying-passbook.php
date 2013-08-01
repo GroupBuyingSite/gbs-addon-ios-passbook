@@ -11,7 +11,7 @@ Plugin Author URI: http://sproutventure.com/
 Text Domain: group-buying
 */
 
-define( 'GB_PB_PATH', WP_PLUGIN_DIR . '/' . basename( dirname( __FILE__ ) ) );
+define( 'GB_PB_PATH', WP_PLUGIN_DIR . '/' . basename( dirname( __FILE__ ) ) . '/' );
 define( 'GB_PBLIB_PATH', WP_PLUGIN_DIR . '/' . basename( dirname( __FILE__ ) ) . '/lib/' );
 define( 'GB_PBCERT_PATH', WP_CONTENT_DIR . '/gb-passbook/' );
 
