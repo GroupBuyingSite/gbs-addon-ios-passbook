@@ -6,6 +6,13 @@ Ability to send users a voucher in iOS Passbook.
 * PHP [ZIP Support](http://php.net/manual/en/book.zip.php) (May be installed by default)
 * Access to filesystem (Script must be able to create temporary folders)
 
+## Installation
+1. Upload and activate plugin.
+2. Go to Group Buying > General Options, scroll to bottom of page and check the box for Passbook Vouchers and then "save changes".
+
+
+## More Secure Setup
+
 ### Requesting the Pass Certificate
 1. Go to the [iOS Provisioning portal](https://developer.apple.com/ios/manage/passtypeids/ios/manage)
 2. Create a new Pass Type ID
@@ -14,12 +21,7 @@ Ability to send users a voucher in iOS Passbook.
 5. Right click the certificate in Keychain Access and choose `Export 'pass.<id>'…`
 6. Choose a password and export the file to a folder
 
-### Installation
-1. Upload and activate plugin.
-2. Go to Group Buying > General Options, scroll to bottom of page and check the box for Passbook Vouchers and then "save changes".
-
-
-### Setup
+### Configuring
 1. Create a new directory under wp-content called "gbs-passbook", e.g. site-root/wp-content/gbs-passbook/...
 2. Request the Pass certificate (`.p12`) and upload it to your server.
 3. Set the password under Group Buying > General Settings > Passbook Vouchers
