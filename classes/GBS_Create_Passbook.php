@@ -23,7 +23,7 @@ class GBS_Create_Passbook {
 		$voucher_name = sprintf( gb__( 'Voucher for %s' ), get_the_title( $voucher_id ) );
 		$name = esc_attr__( gb_get_name( $user_id ) );
 
-		$pass->setJSON( '{
+		$json = '{
 		   	"passTypeIdentifier": "'.GBS_Passbook_Options::$passtype.'",
 		   	"formatVersion": 1,
 		    "organizationName": "'.get_option( 'blogname' ).'",
@@ -59,7 +59,9 @@ class GBS_Create_Passbook {
 				"messageEncoding": "iso-8859-1",
 				"altText": "'.$serial.'"
 			}
-		}' );
+		}';
+
+		$pass->setJSON( apply_filters( 'gb_passbook_vouchers_json_array', $json, $voucher_id, $output ) );
 
 		// add files to the PKPass package
 		$pass->addFile( GBS_Passbook_Options::$icon );
@@ -67,7 +69,10 @@ class GBS_Create_Passbook {
 		$pass->addFile( GBS_Passbook_Options::$logo );
 		$pass->addFile( GBS_Passbook_Options::$bg );
 
-		if ( !$pass->create( $output ) ) { // Create and output the PKPass
+		$passbook = $pass->create( $output );
+
+		// Fail
+		if ( !$passbook ) { // Create and output the PKPass
 			if ( $output ) {
 				echo 'Error: '.$pass->getError();
 			}
@@ -75,6 +80,12 @@ class GBS_Create_Passbook {
 				error_log( 'passbook error ' . print_r( $pass->getError(), TRUE ) );
 			}
 		}
-		exit;
+
+		// Success
+		if ( !$output ) {
+			return $passbook;
+		} else { // exit since the passbook was already sent to the browser.
+			exit;
+		}
 	}
 }
