@@ -7,6 +7,9 @@ class GBS_Create_Passbook {
 
 	public function pass( $voucher_id = 0, $output = TRUE ) {
 		$pass = PK_Pass_Init::init();
+		if ( !class_exists('GBS_Passbook_Options') ) {
+			require_once( 'GBS_Passbook_Options.php' );
+		}
 		GBS_Passbook_Options::init();
 
 		$voucher = Group_Buying_Voucher::get_instance( $voucher_id );

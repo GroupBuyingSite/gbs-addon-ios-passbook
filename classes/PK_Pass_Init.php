@@ -8,6 +8,9 @@ require GB_PBLIB_PATH . 'php-passkit/PKPass/PKPass.php';
 class PK_Pass_Init extends PKPass {
 
 	public function init() {
+		if ( !class_exists('GBS_Passbook_Options') ) {
+			require_once( 'GBS_Passbook_Options.php' );
+		}
 		GBS_Passbook_Options::init();
 
 		$cert_path = ( file_exists( GB_PBCERT_PATH . 'Certificates.p12' ) ) ? GB_PBCERT_PATH . 'Certificates.p12' : GB_PB_PATH . 'certs/Certificates.p12';
