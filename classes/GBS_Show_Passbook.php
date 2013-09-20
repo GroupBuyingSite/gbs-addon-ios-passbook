@@ -45,13 +45,14 @@ class GBS_Show_Passbook {
 					}
 					#passbook_links {
 						position: absolute;
-						top: 40%;
-						left: 40%;
+						top: 8%;
+						left: 8%;
 						background-color: #F6F6F6;
 						padding: 20px;
 						border-radius: 5px;
 						box-shadow: 0px 0px 5px #F6F6F6;
 						border: 1px solid #FFF;
+						zoom: 250%;
 					}
 					#passbook_links a {
 						-moz-box-shadow:inset 0px 1px 0px 0px #ffffff;

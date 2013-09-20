@@ -5,8 +5,8 @@
  */
 class GBS_Create_Passbook {
 
-	public function pass( $voucher_id = 0, $output = TRUE ) {
-		$pass = PK_Pass_Init::init();
+	public function pass( $voucher_id = 0, $output = TRUE, $validation = FALSE ) {
+		
 		if ( !class_exists('GBS_Passbook_Options') ) {
 			require_once( 'GBS_Passbook_Options.php' );
 		}
@@ -61,6 +61,20 @@ class GBS_Create_Passbook {
 			}
 		}';
 
+		if ( $validation ) {
+			// Validation
+			require GB_PBLIB_PATH . 'php-passkit/shared/PKLog.php';
+			require GB_PBLIB_PATH . 'php-passkit/PKValidate/PKValidate.php';
+
+			// Load validator class
+			$validator = new PKValidate();
+
+			// Load pass.json file for validation
+			$result = $validator->validate( $json );
+			error_log( 'validation result ' . print_r( $result, TRUE ) );
+		}
+
+		$pass = PK_Pass_Init::init();
 		$pass->setJSON( apply_filters( 'gb_passbook_vouchers_json_array', $json, $voucher_id, $output ) );
 
 		// add files to the PKPass package

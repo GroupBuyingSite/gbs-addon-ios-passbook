@@ -1,4 +1,8 @@
 <?php
+// GB Passbook AddOn
+// pass.com.groupbuyingsite.passbook-addon
+// defaultgbscertificatepassword
+
 
 require GB_PBLIB_PATH . 'php-passkit/PKPass/PKPass.php';
 

@@ -20,8 +20,8 @@ class GBS_Passbook_Options extends GBS_Passbook_Addon {
 	public static $bg;
 
 	public static function init() {
-		self::$password = get_option( self::PASSWORD, 'gbsdefaultpassword' );
-		self::$passtype = get_option( self::TYPE, 'pass.com.groupbuyingsite.passbookvoucher' );
+		self::$password = get_option( self::PASSWORD, 'defaultgbscertificatepassword' );
+		self::$passtype = get_option( self::TYPE, 'pass.com.groupbuyingsite.passbook-addon' );
 		self::$teamid = get_option( self::TEAMID, 'AGK5BZEN3E' );
 		self::$logo = get_option( self::LOGO, GB_PB_PATH . '/temp/logo.png' );
 		self::$icon = get_option( self::ICON, GB_PB_PATH . '/temp/icon.png'  );
