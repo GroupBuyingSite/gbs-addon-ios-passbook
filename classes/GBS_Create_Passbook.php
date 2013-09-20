@@ -20,7 +20,6 @@ class GBS_Create_Passbook {
 
 		$serial = gb_get_voucher_code( $voucher_id );
 		$security_code = gb_get_voucher_security_code( $voucher_id );
-		$expiration = date( get_option( 'date_format' ), gb_get_voucher_expiration_date( $voucher_id ) );
 		$expiration = ( gb_get_voucher_expiration_date( $voucher_id ) ) ? date( get_option( 'date_format' ), gb_get_voucher_expiration_date( $voucher_id ) ) : gb__('No Expiration') ;
 		$instructions = gb_get_voucher_usage_instructions( $voucher_id );
 		$legal = gb_get_voucher_legal( $voucher_id );
@@ -31,62 +30,62 @@ class GBS_Create_Passbook {
 		$json = '{
 		   	"passTypeIdentifier": "'.GBS_Passbook_Options::$passtype.'",
 		   	"formatVersion": 1,
-		    "organizationName": "'.get_option( 'blogname' ).'",
+		    "organizationName": "'.addcslashes(get_option( 'blogname' ),'"').'",
 		    "teamIdentifier": "'.GBS_Passbook_Options::$teamid.'",
-		   	"serialNumber": "'.$serial.'",
+		   	"serialNumber": "'.addcslashes($serial,'"').'",
 			"backgroundColor": "rgb(240,240,240)",
-			"logoText": "'.get_option( 'blogname' ).'",
-			"description": "'.$voucher_name.'",
+			"logoText": "'.addcslashes(get_option( 'blogname' ),'"').'",
+			"description": "'.addcslashes($voucher_name,'"').'",
 			"storeCard": {
 				"secondaryFields": [
 					{
 						"key": "name",
 						"label": "'.gb__('NAME').'",
-						"value": "'.$name.'"
+						"value": "'.addcslashes($name,'"').'"
 					},
 					{
 						"key": "balance",
 						"label": "'.gb__('EXPIRATION').'",
-						"value": "'.$expiration.'"
+						"value": "'.addcslashes($expiration,'"').'"
 					}
 				],
 				"backFields": [
 					{
 					"key": "id",
 					"label": "'.gb__('Voucher Code').'",
-					"value": "'.$serial.'"
+					"value": "'.addcslashes($serial,'"').'"
 					},
 					{
 					"key": "security",
 					"label": "'.gb__('Reference').'",
-					"value": "'.$security_code.'"
+					"value": "'.addcslashes($security_code,'"').'"
 					},
 					{
 					"key": "instructions",
 					"label": "'.gb__('Instructions').'",
-					"value": "'.$instructions.'"
+					"value": "'.addcslashes($instructions,'"').'"
 					},
 					{
 					"key": "fineprint",
 					"label": "'.gb__('Fine Print').'",
-					"value": "'.$fine_print.'"
+					"value": "'.addcslashes($fine_print,'"').'"
 					},
 					{
 					"key": "legal",
 					"label": "'.gb__('Terms').'",
-					"value": "'.$legal.'"
+					"value": "'.addcslashes($legal,'"').'"
 					}
 				]
 			},
 			"barcode": {
 				"format": "PKBarcodeFormatPDF417",
-				"message": "'.$serial.'",
+				"message": "'.addcslashes($serial,'"').'",
 				"messageEncoding": "iso-8859-1",
-				"altText": "'.$serial.'"
+				"altText": "'.addcslashes($serial,'"').'"
 			}
 		}';
 
-		if ( $validation ) {
+		if ( !$validation ) {
 			// Validation
 			require GB_PBLIB_PATH . 'php-passkit/shared/PKLog.php';
 			require GB_PBLIB_PATH . 'php-passkit/PKValidate/PKValidate.php';

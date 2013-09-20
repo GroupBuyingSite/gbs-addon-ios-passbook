@@ -7,10 +7,10 @@ class GBS_Passbook_Options extends GBS_Passbook_Addon {
 	const PASSWORD = 'gb_passbook_vouchers_password_v2';
 	const TYPE = 'gb_passbook_vouchers_typeid_v2';
 	const TEAMID = 'gb_passbook_vouchers_teamid_v2';
-	const LOGO = 'gb_passbook_vouchers_logo';
-	const ICON = 'gb_passbook_vouchers_icon';
-	const ICON2 = 'gb_passbook_vouchers_icon2';
-	const BG = 'gb_passbook_vouchers_background';
+	const LOGO = 'gb_passbook_vouchers_logo_v2';
+	const ICON = 'gb_passbook_vouchers_icon_v2';
+	const ICON2 = 'gb_passbook_vouchers_icon2_v2';
+	const BG = 'gb_passbook_vouchers_background_v2';
 	public static $password;
 	public static $passtype;
 	public static $teamid;
@@ -46,9 +46,9 @@ class GBS_Passbook_Options extends GBS_Passbook_Addon {
 		register_setting( $page, self::BG );
 
 		// Fields
-		add_settings_field( self::PASSWORD, self::__( 'Certificate Password' ), array( get_class(), 'display_option' ), $page, $section );
-		add_settings_field( self::TYPE, self::__( 'passTypeIdentifier' ), array( get_class(), 'display_type' ), $page, $section );
-		add_settings_field( self::TEAMID, self::__( 'teamIdentifier' ), array( get_class(), 'display_teamid' ), $page, $section );
+		//add_settings_field( self::PASSWORD, self::__( 'Certificate Password' ), array( get_class(), 'display_option' ), $page, $section );
+		//add_settings_field( self::TYPE, self::__( 'passTypeIdentifier' ), array( get_class(), 'display_type' ), $page, $section );
+		//add_settings_field( self::TEAMID, self::__( 'teamIdentifier' ), array( get_class(), 'display_teamid' ), $page, $section );
 		add_settings_field( self::LOGO, self::__( 'Passbook Logo' ), array( get_class(), 'display_logo' ), $page, $section );
 		add_settings_field( self::ICON, self::__( 'Passbook Icon' ), array( get_class(), 'display_icon' ), $page, $section );
 		add_settings_field( self::ICON2, self::__( 'Passbook Icon@2x (retina)' ), array( get_class(), 'display_icon2' ), $page, $section );
