@@ -20,6 +20,11 @@ class GBS_Create_Passbook {
 
 		$serial = gb_get_voucher_code( $voucher_id );
 		$security_code = gb_get_voucher_security_code( $voucher_id );
+		$expiration = date( get_option( 'date_format' ), gb_get_voucher_expiration_date( $voucher_id ) );
+		$expiration = ( gb_get_voucher_expiration_date( $voucher_id ) ) ? date( get_option( 'date_format' ), gb_get_voucher_expiration_date( $voucher_id ) ) : gb__('No Expiration') ;
+		$instructions = gb_get_voucher_usage_instructions( $voucher_id );
+		$legal = gb_get_voucher_legal( $voucher_id );
+		$fine_print = gb_get_univ_voucher_fine_print( $voucher_id );
 		$voucher_name = sprintf( gb__( 'Voucher for %s' ), get_the_title( $voucher_id ) );
 		$name = esc_attr__( gb_get_name( $user_id ) );
 
@@ -36,20 +41,40 @@ class GBS_Create_Passbook {
 				"secondaryFields": [
 					{
 						"key": "name",
-						"label": "NAME",
+						"label": "'.gb__('NAME').'",
 						"value": "'.$name.'"
 					},
 					{
 						"key": "balance",
-						"label": "CODE",
-						"value": "'.$security_code.'"
+						"label": "'.gb__('EXPIRATION').'",
+						"value": "'.$expiration.'"
 					}
 				],
 				"backFields": [
 					{
 					"key": "id",
-					"label": "Card Number",
+					"label": "'.gb__('Voucher Code').'",
 					"value": "'.$serial.'"
+					},
+					{
+					"key": "security",
+					"label": "'.gb__('Reference').'",
+					"value": "'.$security_code.'"
+					},
+					{
+					"key": "instructions",
+					"label": "'.gb__('Instructions').'",
+					"value": "'.$instructions.'"
+					},
+					{
+					"key": "fineprint",
+					"label": "'.gb__('Fine Print').'",
+					"value": "'.$fine_print.'"
+					},
+					{
+					"key": "legal",
+					"label": "'.gb__('Terms').'",
+					"value": "'.$legal.'"
 					}
 				]
 			},
@@ -78,10 +103,10 @@ class GBS_Create_Passbook {
 		$pass->setJSON( apply_filters( 'gb_passbook_vouchers_json_array', $json, $voucher_id, $output ) );
 
 		// add files to the PKPass package
-		$pass->addFile( GBS_Passbook_Options::$icon );
-		$pass->addFile( GBS_Passbook_Options::$icon2 );
-		$pass->addFile( GBS_Passbook_Options::$logo );
-		$pass->addFile( GBS_Passbook_Options::$bg );
+		$pass->addFile( GBS_Passbook_Options::$icon, 'icon.png' );
+		$pass->addFile( GBS_Passbook_Options::$icon2, 'icon@2x.png' );
+		$pass->addFile( GBS_Passbook_Options::$logo, 'logo.png' );
+		$pass->addFile( GBS_Passbook_Options::$bg, 'strip.png' );
 
 		$passbook = $pass->create( $output );
 

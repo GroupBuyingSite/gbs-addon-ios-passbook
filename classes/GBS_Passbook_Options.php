@@ -4,9 +4,9 @@
 * Creates the Passbook Options
 */
 class GBS_Passbook_Options extends GBS_Passbook_Addon {
-	const PASSWORD = 'gb_passbook_vouchers_password';
-	const TYPE = 'gb_passbook_vouchers_typeid';
-	const TEAMID = 'gb_passbook_vouchers_teamid';
+	const PASSWORD = 'gb_passbook_vouchers_password_v2';
+	const TYPE = 'gb_passbook_vouchers_typeid_v2';
+	const TEAMID = 'gb_passbook_vouchers_teamid_v2';
 	const LOGO = 'gb_passbook_vouchers_logo';
 	const ICON = 'gb_passbook_vouchers_icon';
 	const ICON2 = 'gb_passbook_vouchers_icon2';
@@ -22,7 +22,7 @@ class GBS_Passbook_Options extends GBS_Passbook_Addon {
 	public static function init() {
 		self::$password = get_option( self::PASSWORD, 'defaultgbscertificatepassword' );
 		self::$passtype = get_option( self::TYPE, 'pass.com.groupbuyingsite.passbook-addon' );
-		self::$teamid = get_option( self::TEAMID, 'AGK5BZEN3E' );
+		self::$teamid = get_option( self::TEAMID, 'WERN56M6YH' );
 		self::$logo = get_option( self::LOGO, GB_PB_PATH . '/temp/logo.png' );
 		self::$icon = get_option( self::ICON, GB_PB_PATH . '/temp/icon.png'  );
 		self::$icon2 = get_option( self::ICON2, GB_PB_PATH . '/temp/icon@2x.png'  );
