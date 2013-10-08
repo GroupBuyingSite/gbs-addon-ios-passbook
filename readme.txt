@@ -8,7 +8,12 @@ Ability to send users a voucher in iOS Passbook.
 
 ## Installation
 1. Upload and activate plugin.
-2. Go to Group Buying > General Options, scroll to bottom of page and check the box for Passbook Vouchers and then "save changes".
+2. Go to Group Buying > Add-ons, find Passbook Vouchers and activate the add-on.
+3. Configure the pass under Group Buying > General Settings
+
+## Template Modifications
+Passbook Vouchers uses the PHP-PKPass library to build passes. Read more about it [here](https://github.com/tschoffelen/PHP-PKPass).
+The json array for the pass is filterable via gb_passbook_vouchers_json_array.
 
 
 ## More Secure Setup
