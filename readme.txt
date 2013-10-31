@@ -11,12 +11,12 @@ Ability to send users a voucher in iOS Passbook.
 2. Go to Group Buying > Add-ons, find Passbook Vouchers and activate the add-on.
 3. Configure the pass under Group Buying > General Settings
 
-## Template Modifications
+## Template Modifications (advanced, limited support)
 Passbook Vouchers uses the PHP-PKPass library to build passes. Read more about it [here](https://github.com/tschoffelen/PHP-PKPass).
 The json array for the pass is filterable via gb_passbook_vouchers_json_array.
 
 
-## More Secure Setup
+## More Secure Setup (advanced, limited support)
 
 ### Requesting the Pass Certificate
 1. Go to the [iOS Provisioning portal](https://developer.apple.com/ios/manage/passtypeids/ios/manage)
@@ -29,6 +29,6 @@ The json array for the pass is filterable via gb_passbook_vouchers_json_array.
 ### Configuring
 1. Create a new directory under wp-content called "gbs-passbook", e.g. site-root/wp-content/gbs-passbook/...
 2. Request the Pass certificate (`.p12`) and upload it to your server.
-3. Set the password under Group Buying > General Settings > Passbook Vouchers
+3. Set the manually via the option name "gb_passbook_vouchers_password_v2", e.g. update_option('gb_passbook_vouchers_password_v2', $new_password )
 4. Download and import your [WWDR Intermediate certificate](https://developer.apple.com/certificationauthority/AppleWWDRCA.cer) to Keychain, export as `.pem` and upload it to the gbs-passbook directory created in step 1.
-4. Change the `passTypeIdentifier` and `teamIndentifier` to the correct values, which can be found on the [iOS Provisioning portal](https://developer.apple.com/ios/manage/passtypeids/ios/manage) after clicking on 'Configure' next to the Pass ID, under Group Buying > General Settings > Passbook Vouchers.
+4. Change the `passTypeIdentifier` and `teamIndentifier` to the correct values, which can be found on the [iOS Provisioning portal](https://developer.apple.com/ios/manage/passtypeids/ios/manage) after clicking on 'Configure' next to the Pass ID. Changing these values requires the json to build the pass to be filtered by 'gb_passbook_vouchers_json_array'.
